@@ -1,0 +1,120 @@
+{
+    "name": "Commerce Kickstart",
+    "description": "Generated on commercekickstart.com",
+    "type": "project",
+    "require": {
+        "ext-curl": "*",
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal-composer/drupal-scaffold": "^2.2",
+        "drupal/admin_toolbar": "~1.0",
+        "drupal/color_field": "~2.0",
+        "drupal/commerce": "~2.0",
+        "drupal/commerce_paypal": "^1.0@beta",
+        "drupal/commerce_shipping": "^2.0@beta",
+        "drupal/console": "~1.0",
+        "drupal/core": "~8.5.0",
+        "drupal/entity_browser": "~2.0",
+        "drupal/entity_embed": "^1.0@beta",
+        "drupal/facets": "^1.0@beta",
+        "drupal/facets_pretty_paths": "^1.0@beta",
+        "drupal/media_entity_browser": "~2.0",
+        "drupal/paragraphs": "^1.2",
+        "drupal/pathauto": "^1.0",
+        "drupal/search_api": "^1.6",
+        "drupal/search_api_solr": "^1.2",
+        "drupal/search_api_solr_multilingual": "^1.1",
+        "drupal/simple_gmap": "^1.4",
+        "drupal/swiftmailer": "~1.0",
+        "drupal/webform": "~5.0",
+        "drupalcommerce/commerce_base": "dev-8.x-1.x",
+        "drush/drush": "^9.0.0",
+        "webflo/drupal-finder": "^0.3.0",
+        "webmozart/path-util": "^2.3"
+    },
+    "require-dev": {
+        "behat/mink": "~1.7",
+        "behat/mink-goutte-driver": "~1.2",
+        "drupal/devel": "^1.2",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsstream": "~1.2",
+        "phpunit/phpunit": ">=4.8.28 <5",
+        "symfony/css-selector": "~2.8"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "replace": {},
+    "provide": {},
+    "suggest": {},
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "autoload-dev": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        "commerce_base": {
+            "type": "vcs",
+            "url": "https://github.com/drupalcommerce/commerce_base"
+        }
+    },
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    },
+    "scripts": {
+        "drupal-scaffold": [
+            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+        ],
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "web/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        },
+        "patches": {
+            "drupal/commerce": {
+                "Use a twig template for rendering calculated prices": "https://www.drupal.org/files/issues/2018-03-08/2943579-12.patch"     
+            }
+        }
+    },
+    "license": "GPL-2.0-or-later",
+    "support": {},
+    "archive": {}
+}
